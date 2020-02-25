@@ -245,3 +245,103 @@ reject.zval
 ```
 
 Note that we still haven't reached the threshold of acceptable power yet, but 500 cases is much closer to that level than 300 cases. For your assignment, you will need to find the minimum number of cases that yields 80% power. Confirm that your results are correct using the calculator linked above.
+
+### Identification Issues in Criminology
+
+#### 1. Diane Saphire (1984)
+
+* National Crime Survey (NCS)
+* p(HH not victimized in a year's time) = θnv (1975)
+* S = R + NR
+* p(HH participates in NCS) = R/S = p
+* θnv = p x θnv|R + (1-p) x θnv|NR (Law of total probability)
+* θnv|NR ∊ [0,1]
+* Point-identified estimate assuming MAR = 0.732
+* Interval estimate = [0.523,0.770]
+
+#### 2. Charles Manski (1995,2012)
+
+* Conclusions = data + assumptions
+* More credible --> answer is vague
+* Less credible --> answer is specific
+* Law of decreasing credibility
+
+#### Example Research Question: Did crime go up or down?
+
+* A fairly common question: why did residential burglaries go up (or down)?
+* Another, less common, question: did residential burglaries go up (or down)?
+* Example: household burglaries in Charlotte NC; comparing 2014 to 2015.
+* Household burglary count from CMPD in 2014 was 4,490; in 2015 the number was 4,983 (an 11% y-o-y increase).
+* Some complications: population, hierarchy rule, # of people per HH, HH vacancy rate, p(report to police).
+* In 2014, p(report) was estimated to be 60%; in 2015, it dropped to 50.8%.
+* NCS/NCVS reports from 1973-2018 for household burglary report-to-police rates (range of 46% to 60%).
+* City-specific estimates from 1970's (range of 45% to 58%). 
+* Urban estimates from 1995 to 2018 (range of 46% to 62%).
+* South estimates from 1996 to 2018 (range of 47% to 67%); larger y-o-y changes in last 10 years.
+* Largest y-o-y change was South region from 2010-11 (64.6% to 48.4%).
+* Lauritsen/Schaum estimates for NYC, Chicago, and LA (50% to 61%).
+* Let p(report hh burglary to police) = pr ∊ [0.45,0.67]
+
+```rout
+# 2014 hh burglaries in CMPD
+
+> 4490/0.67
+[1] 6701
+>
+> 4490/0.45
+[1] 9978
+>
+
+# 2015 hh burglaries in CMPD
+
+> 4983/0.67
+[1] 7437
+>
+> 4983/0.45
+[1] 11073
+> 
+```
+
+* A more common year-over-year transition would be a movement in the [0.5,0.6] range.
+
+```rout
+# 2014 hh burglaries in CMPD
+
+> 4490/0.6
+[1] 7483
+>
+> 4490/0.5
+[1] 8980
+
+# 2015 hh burglaries in CMPD
+
+> 4983/0.6
+[1] 8305
+> 
+> 4983/0.5
+[1] 9966
+
+```
+
+* In neither instance is the sign of the y-o-y change identified; but consider this example where the p(report) range is [0.5,0.55]:
+
+```rout
+# 2014 hh burglaries in CMPD
+
+> 4490/0.55
+[1] 8164
+>
+> 4490/0.5
+[1] 8980
+>
+
+# 2015 hh burglaries in CMPD
+
+> 4983/0.55
+[1] 9060
+> 
+> 4983/0.5
+[1] 9966
+```
+
+Part 2 of this week's assignment: consider the residential burglaries in Charlotte-Mecklenburg from 2016 (N = 4,767) and 2017 (N = 4,240). Conduct an identification analysis for the change between these two years and assess whether we can reasonably draw any conclusions about the sign of the change from one year to the next. You can use the 2017 National Crime Victimization Survey [report](https://www.bjs.gov/content/pub/pdf/cv17.pdf) (Table 6) to assess the proportion of residential burglaries reported to the police on a national scale between the two years.
