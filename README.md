@@ -345,25 +345,25 @@ Note that we still haven't reached the threshold of acceptable power yet, but 50
 
 ```
 
-* In neither instance is the sign of the y-o-y change identified; but consider this example where the p(report) range is [0.5,0.55]:
+The standard error of the estimate in each year is roughly 2 percentage points. So, this implies the following approximate 95% confidence intervals: 2014 - [0.56,0.64] and 2015 - [0.46,0.54].
 
-```rout
-# 2014 hh burglaries in CMPD
-
-> 4490/0.55
-[1] 8164
->
-> 4490/0.5
-[1] 8980
->
-
-# 2015 hh burglaries in CMPD
-
-> 4983/0.55
-[1] 9060
+```
+> # 2014 Analysis
 > 
-> 4983/0.5
-[1] 9966
+> 4490/0.64
+[1] 7015.625
+> 4490/0.56
+[1] 8017.857
+> 
+> # 2015 Analysis
+> 
+> 4983/0.54
+[1] 9227.778
+> 4983/0.46
+[1] 10832.61
+>
 ```
 
-Part 2 of this week's assignment: consider the residential burglaries in Charlotte-Mecklenburg from 2016 (N = 4,767) and 2017 (N = 4,240). Conduct an identification analysis for the change between these two years and assess whether we can reasonably draw any conclusions about the sign of the change from one year to the next. You can use the 2017 National Crime Victimization Survey [report](https://www.bjs.gov/content/pub/pdf/cv17.pdf) (Table 6) to assess the proportion of residential burglaries reported to the police on a national scale between the two years.
+So, it turns out that this assumption is strong enough to identify the sign of the change from one year to the next.
+
+Part 2 of this week's assignment: consider the residential burglaries in Charlotte-Mecklenburg from 2016 (N = 4,767) and 2017 (N = 4,240). Conduct an identification analysis for the change between these two years and assess whether we can reasonably draw any conclusions about the sign of the change from one year to the next and how the conclusion does or does not change depending on the assumptions one makes. You can use the 2017 National Crime Victimization Survey [report](https://www.bjs.gov/content/pub/pdf/cv17.pdf) (Table 6) to assess the proportion of residential burglaries reported to the police on a national scale between the two years. 
