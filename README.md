@@ -10,7 +10,7 @@
 
 * When designing a study it is often useful (and required) to consider the power of the test that will be conducted. Here is a standard [power calculator](https://www.stat.ubc.ca/~rollin/stats/ssize/b2.html) found on the web.
 
-* The test we will conduct is a difference between independent two proportions z-test. Recall that all t-tests and z-tests have the following form: delta/se(delta).
+* The test we will conduct is a difference between independent two proportions z-test. Recall that all t-tests and z-tests have the following form: delta/se(delta). The formula we will use (which is an approximation) is well-defined in the literature. Here is an [example](https://online.stat.psu.edu/stat414/node/268/).
 
 * The critical value for a two-tailed z-test is abs(1.96). So, a z-test that is greater than 1.96 or less than -1.96 is in the critical region and leads us to reject the hypothesis that delta is zero in the population from which the sample came.
 
@@ -54,7 +54,8 @@ sdf.p0 <- sdftable[2,1]/(sdftable[1,1]+sdftable[2,1])
 sdf.p1 <- sdftable[2,2]/(sdftable[1,2]+sdftable[2,2])
 sdf.pooled.p <- (sdf.p0*sdf.n0+sdf.p1*sdf.n1)/(sdf.n0+sdf.n1)
 sdf.delta <- sdf.p1-sdf.p0
-sdf.zval <- sdf.delta/sqrt(sdf.pooled.p*(1-sdf.pooled.p)*(1/sdf.n0+1/sdf.n1)) 
+sdf.se.delta <- sqrt(sdf.pooled.p*(1-sdf.pooled.p)*(1/sdf.n0+1/sdf.n1))
+sdf.zval <- sdf.delta/sdf.se.delta
 sdf.delta
 sdf.zval
 ```
@@ -108,7 +109,8 @@ sdfout  0  1
 > sdf.p1 <- sdftable[2,2]/(sdftable[1,2]+sdftable[2,2])
 > sdf.pooled.p <- (sdf.p0*sdf.n0+sdf.p1*sdf.n1)/(sdf.n0+sdf.n1)
 > sdf.delta <- sdf.p1-sdf.p0
-> sdf.zval <- sdf.delta/sqrt(sdf.pooled.p*(1-sdf.pooled.p)*(1/sdf.n0+1/sdf.n1)) 
+> sdf.se.delta <- sqrt(sdf.pooled.p*(1-sdf.pooled.p)*(1/sdf.n0+1/sdf.n1))
+> sdf.zval <- sdf.delta/sdf.se.delta
 > sdf.delta
 [1] -0.09830599
 > sdf.zval
@@ -124,6 +126,7 @@ Note that since this z-value is greater than -1.96 and less than +1.96, it does 
 nsamples <- 1000
 
 delta <- vector()
+se.delta <- vector()
 zval <- vector()
 
 for(k in 1:nsamples){
@@ -137,12 +140,15 @@ for(k in 1:nsamples){
   p1 <- stable[2,2]/(stable[1,2]+stable[2,2])
   pooled.p <- (p0*n0+p1*n1)/(n0+n1)
   delta[k] <- p1-p0
-  zval[k] <- delta[k]/sqrt(pooled.p*(1-pooled.p)*(1/n0+1/n1))  
+  se.delta[k] <- sqrt(pooled.p*(1-pooled.p)*(1/n0+1/n1))
+  zval[k] <- delta[k]/se.delta[k]  
 }
 
 reject.zval <- ifelse(abs(zval)>1.96,1,0)
 table(reject.zval)
 mean(delta)
+mean(se.delta)
+sd(delta)
 ```
 
 and here is the output:
@@ -153,6 +159,7 @@ and here is the output:
 > nsamples <- 1000
 > 
 > delta <- vector()
+> se.delta <- vector()
 > zval <- vector()
 > 
 > for(k in 1:nsamples){
@@ -166,7 +173,8 @@ and here is the output:
 +   p1 <- stable[2,2]/(stable[1,2]+stable[2,2])
 +   pooled.p <- (p0*n0+p1*n1)/(n0+n1)
 +   delta[k] <- p1-p0
-+   zval[k] <- delta[k]/sqrt(pooled.p*(1-pooled.p)*(1/n0+1/n1))  
++   se.delta[k] <- sqrt(pooled.p*(1-pooled.p)*(1/n0+1/n1))
++   zval[k] <- delta[k]/se.delta[k]  
 + }
 > 
 > reject.zval <- ifelse(abs(zval)>1.96,1,0)
@@ -176,6 +184,10 @@ reject.zval
 555 445 
 > mean(delta)
 [1] -0.09888599
+> mean(se.delta)
+[1] 0.05505584
+> sd(delta)
+[1] 0.05534374
 > 
 ```
 
@@ -188,6 +200,7 @@ nsamples <- 1000
 ncases <- 500
 
 delta <- vector()
+se.delta <- vector()
 zval <- vector()
 
 for(k in 1:nsamples){
@@ -201,12 +214,15 @@ for(k in 1:nsamples){
   p1 <- stable[2,2]/(stable[1,2]+stable[2,2])
   pooled.p <- (p0*n0+p1*n1)/(n0+n1)
   delta[k] <- p1-p0
-  zval[k] <- delta[k]/sqrt(pooled.p*(1-pooled.p)*(1/n0+1/n1))  
+  se.delta[k] <- sqrt(pooled.p*(1-pooled.p)*(1/n0+1/n1))
+  zval[k] <- delta[k]/se.delta[k]  
 }
 
 reject.zval <- ifelse(abs(zval)>1.96,1,0)
 table(reject.zval)
 mean(delta)
+mean(se.delta)
+sd(delta)
 ```
 
 When we conduct the simulation with a sample size of 500 cases instead of 300 cases, the situation improves:
@@ -218,6 +234,7 @@ When we conduct the simulation with a sample size of 500 cases instead of 300 ca
 > ncases <- 500
 > 
 > delta <- vector()
+> se.delta <- vector()
 > zval <- vector()
 > 
 > for(k in 1:nsamples){
@@ -231,16 +248,21 @@ When we conduct the simulation with a sample size of 500 cases instead of 300 ca
 +   p1 <- stable[2,2]/(stable[1,2]+stable[2,2])
 +   pooled.p <- (p0*n0+p1*n1)/(n0+n1)
 +   delta[k] <- p1-p0
-+   zval[k] <- delta[k]/sqrt(pooled.p*(1-pooled.p)*(1/n0+1/n1))  
++   se.delta[k] <- sqrt(pooled.p*(1-pooled.p)*(1/n0+1/n1))
++   zval[k] <- delta[k]/se.delta[k]  
 + }
 > 
 > reject.zval <- ifelse(abs(zval)>1.96,1,0)
 > table(reject.zval)
 reject.zval
   0   1 
-356 644 
+353 647 
 > mean(delta)
-[1] -0.09818709
+[1] -0.09828892
+> mean(se.delta)
+[1] 0.04268121
+> sd(delta)
+[1] 0.04222482
 > 
 ```
 
