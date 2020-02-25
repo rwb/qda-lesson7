@@ -179,7 +179,7 @@ reject.zval
 > 
 ```
 
-To interpret this simulation, we create a variable called reject that is coded 1 if the null hypothesis is rejected and 0 if we fail to reject. Considering the 1000 samples we drew, we rejected the null hypothesis that delta = 0 in about 44.5% of the samples. In general, we want the rejection rate to be at least 80%. To attain that level of power, we would need to increase our sample size.
+To interpret this simulation, we create a variable called reject that is coded 1 if the null hypothesis is rejected and 0 if we fail to reject. Considering the 1000 samples we drew, we rejected the null hypothesis that delta = 0 in about 44.5% of the samples. In general, we want the rejection rate to be at least 80%. To attain that level of power, we would need to increase our sample size. Let's see what happens when we increase the number of cases from 300 to 500.
 
 ```R
 # begin power simulation
