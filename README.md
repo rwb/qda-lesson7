@@ -288,7 +288,7 @@ Note that we still haven't reached the threshold of acceptable power yet, but 50
 * Less credible --> answer is specific
 * Law of decreasing credibility
 
-#### Example Research Question: Did crime go up or down?
+#### 3. Example Research Question: Did crime go up or down?
 
 * A fairly common question: why did residential burglaries go up (or down)?
 * Another, less common, question: did residential burglaries go up (or down)?
