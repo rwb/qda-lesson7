@@ -8,7 +8,7 @@
 
 * We would also like the probability of making a Type II error to be small. Generally, this kind of error is phrased in terms of 1 - Type II error probability which corresponds to the power of a test (i.e., the probability of rejecting a hypothesis when that hypothesis is false. 
 
-* When designing a study it is often useful (and required) to consider the power of the test that will be conducted. Here is a standard [power calculator](https://www.stat.ubc.ca/~rollin/stats/ssize/b2.html) found on the web and here is some R code we will use.
+* When designing a study it is often useful (and required) to consider the power of the test that will be conducted. Here is a standard [power calculator](https://www.stat.ubc.ca/~rollin/stats/ssize/b2.html) found on the web.
 
 * The test we will conduct is a difference between independent two proportions z-test. Recall that all t-tests and z-tests have the following form: delta/se(delta).
 
