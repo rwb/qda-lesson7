@@ -266,7 +266,7 @@ reject.zval
 > 
 ```
 
-Note that we still haven't reached the threshold of acceptable power yet, but 500 cases is much closer to that level than 300 cases. For your assignment, you will need to find the minimum number of cases that yields 80% power. Confirm that your results are correct using the calculator linked above.
+Note that we still haven't reached the threshold of acceptable power yet, but 500 cases is much closer to that level than 300 cases. For Part I of your assignment this week, you will need to find the minimum number of cases that yields 80% power. Confirm that your results are correct using the calculator linked above.
 
 ### Identification Issues in Criminology
 
@@ -274,18 +274,32 @@ Note that we still haven't reached the threshold of acceptable power yet, but 50
 
 * National Crime Survey (NCS)
 * p(HH not victimized in a year's time) = θnv (1975)
-* S = R + NR
-* p(HH participates in NCS) = R/S = p
+* p(HH participates in NCS) = R/S = p = 0.74
 * θnv = p x θnv|R + (1-p) x θnv|NR (Law of total probability)
 * θnv|NR ∊ [0,1]
 * Point-identified estimate assuming MAR = 0.732
-* Interval estimate = [0.523,0.770]
+* Lower bound of θnv = p x θnv|R = 0.74 x 0.732 = 0.542
+* Upper bound of θnv = p x θnv|R + (1-p) = 0.74 x 0.732 + 0.26 = 0.802 
+* Bounds on θnv = [0.542,0.802]
+
+#### 2. Arrest Example (Brame et al. 2012; [link](https://pediatrics.aappublications.org/content/pediatrics/129/1/21.full.pdf))
+
+* National Longitudinal Survey of Youth (1997)
+* p(person arrested by age 23) = θa 
+* S = R + NR = (1858+4299) + 1178 = 7335
+* p(participates in survey) = R/S = p = (1858+4299)/7335 = 0.839
+* θnv = p x θa|R + (1-p) x θa|NR (Law of total probability)
+* θa|NR ∊ [0,1]
+* Point-identified estimate assuming MAR = 0.302
+* Lower bound of θa = p x θa|R = 0.302 x 0.839 = 0.253
+* Upper bound of θa = p x θa|R + (1-p) = 0.302 x 0.839 + (1-0.839) = 0.414
+* Bounds on θa = [0.253,0.414]
 
 #### 2. Charles Manski (1995,2012)
 
 * Conclusions = data + assumptions
-* More credible --> answer is vague
-* Less credible --> answer is specific
+* More credible --> answer is vague (interval-identified)
+* Less credible --> answer is specific (point-identified)
 * Law of decreasing credibility
 
 #### 3. Example Research Question: Did crime go up or down?
@@ -344,7 +358,7 @@ So, it turns out that the data are not strong enough to identify the sign of the
 
 ```
 
-This analysis is also not strong enough to identify the sign of the change in residential burglary. A third approach would be to assume that the reporting rate in Charlotte lies within sampling error of the national reporting rate each year. The standard error of the estimate in each year is roughly 2 percentage points. So, this implies the following approximate 95% confidence intervals: 2014 - [0.56,0.64] and 2015 - [0.46,0.54].
+This analysis is also not strong enough to identify the sign of the change in residential burglary. A third approach would be to assume that the reporting rate in Charlotte lies within sampling error of the national reporting rate each year. The standard error of the estimate in each year is roughly 2 percentage points. So, this implies the following approximate 95% confidence intervals: 2014 - [0.56,0.64] and 2015 - [0.46,0.54]. *Note*: the approximate 95% confidence interval is obtained by the following formula: [point estimate - 2*se(point estimate), point estimate + 2*se(point estimate)].
 
 ```
 > # 2014 Analysis
@@ -365,4 +379,4 @@ This analysis is also not strong enough to identify the sign of the change in re
 
 Apparently, this assumption is strong enough to identify the sign of the change from one year to the next.
 
-Part 2 of this week's assignment: consider the residential burglaries in Charlotte-Mecklenburg from 2016 (N = 4,767) and 2017 (N = 4,240). Conduct an identification analysis for the change between these two years and assess whether we can reasonably draw any conclusions about the sign of the change from one year to the next and how the conclusion does or does not change depending on the assumptions one makes. You can use the 2017 National Crime Victimization Survey [report](https://www.bjs.gov/content/pub/pdf/cv17.pdf) (Table 6) to assess the proportion of residential burglaries reported to the police on a national scale between the two years. 
+Part 2 of this week's assignment: consider the residential burglaries in Charlotte-Mecklenburg from 2016 (N = 4,767) and 2017 (N = 4,240). Conduct an identification analysis for the change between these two years and assess whether we can reasonably draw any conclusions about the sign of the change from one year to the next and how the conclusion does or does not change depending on the assumptions one makes. You can use the 2017 National Crime Victimization Survey [report](https://www.bjs.gov/content/pub/pdf/cv17.pdf) (Table 6) to assess the proportion of residential burglaries reported to the police on a national scale between the two years. You can obtain the standard errors of the point estimates by looking at Appendix Table 8.
