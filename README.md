@@ -295,14 +295,14 @@ Note that we still haven't reached the threshold of acceptable power yet, but 50
 * Upper bound of θa = p x θa|R + (1-p) = 0.302 x 0.839 + (1-0.839) = 0.414
 * Bounds on θa = [0.253,0.414]
 
-#### 2. Charles Manski (1995,2012)
+#### 3. Charles Manski (1995,2012)
 
 * Conclusions = data + assumptions
 * More credible --> answer is vague (interval-identified)
 * Less credible --> answer is specific (point-identified)
 * Law of decreasing credibility
 
-#### 3. Example Research Question: Did crime go up or down?
+#### 4. Example Research Question: Did crime go up or down?
 
 * A fairly common question: why did residential burglaries go up (or down)?
 * Another, less common, question: did residential burglaries go up (or down)?
