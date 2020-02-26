@@ -273,14 +273,14 @@ Note that we still haven't reached the threshold of acceptable power yet, but 50
 #### 1. Diane Saphire (1984)
 
 * National Crime Survey (NCS)
-* p(HH not victimized in a year's time) = θnv (1975)
+* p(HH victimized in a year's time) = θv (1975)
 * p(HH participates in NCS) = R/S = p = 0.74
-* θnv = p x θnv|R + (1-p) x θnv|NR (Law of total probability)
-* θnv|NR ∊ [0,1]
-* Point-identified estimate assuming MAR = 0.732
-* Lower bound of θnv = p x θnv|R = 0.74 x 0.732 = 0.542
-* Upper bound of θnv = p x θnv|R + (1-p) = 0.74 x 0.732 + (1-0.74) = 0.802 
-* Bounds on θnv = [0.542,0.802]
+* θnv = p x θv|R + (1-p) x θv|NR (Law of total probability)
+* θv|NR ∊ [0,1]
+* Point-identified estimate assuming MAR = 0.268
+* Lower bound of θnv = p x θv|R = 0.74 x 0.268 = 0.198
+* Upper bound of θnv = p x θv|R + (1-p) = 0.74 x 0.268 + (1-0.74) = 0.458 
+* Bounds on θnv = [0.198,0.458]
 
 #### 2. Arrest Example (Brame et al. 2012; [link](https://pediatrics.aappublications.org/content/pediatrics/129/1/21.full.pdf))
 
