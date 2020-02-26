@@ -358,7 +358,7 @@ So, it turns out that the data are not strong enough to identify the sign of the
 
 ```
 
-This analysis is also not strong enough to identify the sign of the change in residential burglary. A third approach would be to assume that the reporting rate in Charlotte lies within sampling error of the national reporting rate each year. The standard error of the estimate in each year is roughly 2 percentage points. So, this implies the following approximate 95% confidence intervals: 2014 - [0.56,0.64] and 2015 - [0.46,0.54]. *Note*: the approximate 95% confidence interval is obtained by the following formula: [point estimate - 2*se(point estimate), point estimate + 2*se(point estimate)].
+This analysis is also not strong enough to identify the sign of the change in residential burglary. A third approach would be to assume that the reporting rate in Charlotte lies within sampling error of the national reporting rate each year. The standard error of the estimate in each year is roughly 2 percentage points. So, this implies the following approximate 95% confidence intervals: 2014 - [0.56,0.64] and 2015 - [0.46,0.54]. *Note*: the approximate 95% confidence interval is obtained by the following formula: [point estimate - 2 x se(point estimate), point estimate + 2 x se(point estimate)].
 
 ```
 > # 2014 Analysis
@@ -377,6 +377,6 @@ This analysis is also not strong enough to identify the sign of the change in re
 >
 ```
 
-Apparently, this assumption is strong enough to identify the sign of the change from one year to the next.
+This assumption is strong enough to identify the sign of the change from one year to the next; but now we know the analysis is fragile (i.e., the conclusions we draw depend on the untestable assumptions we make).
 
 Part 2 of this week's assignment: consider the residential burglaries in Charlotte-Mecklenburg from 2016 (N = 4,767) and 2017 (N = 4,240). Conduct an identification analysis for the change between these two years and assess whether we can reasonably draw any conclusions about the sign of the change from one year to the next and how the conclusion does or does not change depending on the assumptions one makes. You can use the 2017 National Crime Victimization Survey [report](https://www.bjs.gov/content/pub/pdf/cv17.pdf) (Table 6) to assess the proportion of residential burglaries reported to the police on a national scale between the two years. You can obtain the standard errors of the point estimates by looking at Appendix Table 8.
