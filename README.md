@@ -279,7 +279,7 @@ Note that we still haven't reached the threshold of acceptable power yet, but 50
 * θnv|NR ∊ [0,1]
 * Point-identified estimate assuming MAR = 0.732
 * Lower bound of θnv = p x θnv|R = 0.74 x 0.732 = 0.542
-* Upper bound of θnv = p x θnv|R + (1-p) = 0.74 x 0.732 + 0.26 = 0.802 
+* Upper bound of θnv = p x θnv|R + (1-p) = 0.74 x 0.732 + (1-0.74) = 0.802 
 * Bounds on θnv = [0.542,0.802]
 
 #### 2. Arrest Example (Brame et al. 2012; [link](https://pediatrics.aappublications.org/content/pediatrics/129/1/21.full.pdf))
@@ -291,8 +291,8 @@ Note that we still haven't reached the threshold of acceptable power yet, but 50
 * θnv = p x θa|R + (1-p) x θa|NR (Law of total probability)
 * θa|NR ∊ [0,1]
 * Point-identified estimate assuming MAR = 0.302
-* Lower bound of θa = p x θa|R = 0.302 x 0.839 = 0.253
-* Upper bound of θa = p x θa|R + (1-p) = 0.302 x 0.839 + (1-0.839) = 0.414
+* Lower bound of θa = p x θa|R = 0.839 x 0.302 = 0.253
+* Upper bound of θa = p x θa|R + (1-p) = 0.839 x 0.302 + (1-0.839) = 0.414
 * Bounds on θa = [0.253,0.414]
 
 #### 3. Charles Manski (1995,2012)
